@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Miscellaneous.cs" />
     <Compile Include="Models\Food.cs" />
     <Compile Include="Models\Insulin.cs" />
     <Compile Include="Models\User.cs" />

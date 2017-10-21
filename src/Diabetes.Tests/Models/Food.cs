@@ -53,6 +53,34 @@ namespace Diabetes.Tests.Models
 
         }
 
+        [Fact]
+        public void QuantityWithNoUnit_ThrowsException()
+        {
+            // arrange isolation
+
+            // arrange test
+            var food = new Core.Models.Food();
+            var exception = default(Exception);
+
+            // act
+            try
+            {
+                food.Quantity = new MeasuredAmount
+                {
+                    Quantity = 0,
+                    Unit = null,
+                };
+            }
+            catch (InvalidDataException ex)
+            {
+                exception = ex;
+            }
+
+            // assert
+            exception.Should().NotBeNull();
+
+        }
+
 
     }
 
