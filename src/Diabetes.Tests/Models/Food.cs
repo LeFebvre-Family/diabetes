@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Diabetes.Core.Models;
 using FluentAssertions;
 using Xunit;
@@ -34,16 +35,21 @@ namespace Diabetes.Tests.Models
             // arrange isolation
 
             // arrange test
-            var foodQuantity = new Core.Models.Food();
-            // act
-            var exception = Assert.Throws<InvalidDataException>(() =>
-            {
-                foodQuantity.Equals(-1);
+            var food = new Core.Models.Food();
+            var exception = default(Exception);
 
-            });
+            // act
+            try
+            {
+                food.Quantity = null;
+            }
+            catch (InvalidDataException ex)
+            {
+                exception = ex;
+            }
 
             // assert
-            exception.Message.Should().Be("The quantity of food cannot be empty.");
+            exception.Should().NotBeNull();
 
         }
 
