@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Diabetes.Core.Models
 {
-    
+
     public class Food
     {
         private string _name;
         private string _foodname;
-        private string _foodquantity;
+        private MeasuredAmount _foodquantity;
         private string _foodcarbs;
 
 
@@ -29,14 +29,14 @@ namespace Diabetes.Core.Models
             set => _foodcarbs = ValidateNewValue(value, "You must have more than zero carbs.");
         }
 
-       
-        public string Quantity
+
+        public MeasuredAmount Quantity
         {
             get => _foodquantity;
-            set => _foodquantity = ValidateNewValue(value, "The quantity of food cannot be empty.");
+            set => _foodquantity = ValidateNewValue(value, "The quantity of food cannot be null.");
         }
 
-       
+
 
         public DateTime Birthdate { get; set; }
 
@@ -48,5 +48,16 @@ namespace Diabetes.Core.Models
                 throw new InvalidDataException(message);
             return value;
         }
+
+        public MeasuredAmount ValidateNewValue(MeasuredAmount value, string message)
+        {
+            if (Equals(value, default(MeasuredAmount)))
+                throw new InvalidDataException(message);
+
+            if (string.IsNullOrEmpty(value.Unit))
+                throw new InvalidDataException(message);
+            return value;
+        }
+
     }
 }

@@ -43,6 +43,7 @@
     <Compile Include="Models\CarbohydratesToInsulinRatio.cs" />
     <Compile Include="Models\Food.cs" />
     <Compile Include="Models\Insulin.cs" />
+    <Compile Include="Models\MeasuredAmount.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
