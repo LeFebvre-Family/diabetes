@@ -10,7 +10,7 @@ namespace Diabetes.Tests
     public class Miscellaneous
     {
 
-        [Fact]
+        [Fact(Skip = "This is only used for interactive demonstrations")]
         public void Interactive_Demonstrations()
         {
             var builder = new StringBuilder();
